@@ -1,0 +1,14 @@
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\bin\Debug\Proyecto.exe.config
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\bin\Debug\Proyecto.exe
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\bin\Debug\Proyecto.pdb
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.pedidos.resources
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.Form3.resources
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.frmProductos.resources
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.frmVentas.resources
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.Properties.Resources.resources
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.csproj.GenerateResource.Cache
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.exe
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.pdb
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.csprojResolveAssemblyReference.cache
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.menu.resources
+C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.Form4ReporteVentas.resources
