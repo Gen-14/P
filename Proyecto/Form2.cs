@@ -33,7 +33,6 @@ namespace Proyecto
         public void bAgregar_Click(object sender, EventArgs e)
         {
             int nuevoID = 1;
-
             try
             {
                 if (string.IsNullOrWhiteSpace(tbCliente.Text) || string.IsNullOrWhiteSpace(tbProductos.Text))
@@ -67,7 +66,6 @@ namespace Proyecto
             {
                 MessageBox.Show("Ocurrió un error: " + ex.Message);
             }
-
         }
         //metodo que limpia los campos de texto 
         private void limpiarCampos()
@@ -119,6 +117,26 @@ namespace Proyecto
             verPedidos nuevoForm = new verPedidos();
             nuevoForm.Show();
             this.Close();
+        }
+
+        private void registrarProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProductos nuevoForm = new frmProductos();
+            nuevoForm.Show();
+            this.Close();
+        }
+        private void almacenarPedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pedidos nuevoForm = new pedidos();
+            nuevoForm.Show();
+            this.Hide();
+        }
+
+        private void registroDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmVentas nuevoForm = new frmVentas();
+            nuevoForm.Show();
+            this.Hide();
         }
 
         private void pedidos_FormClosing(object sender, FormClosingEventArgs e)

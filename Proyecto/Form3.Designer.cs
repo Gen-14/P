@@ -1,6 +1,6 @@
 ﻿namespace Proyecto
 {
-    partial class Form3
+    partial class verPedidos
     {
         /// <summary>
         /// Required designer variable.
@@ -86,7 +86,6 @@
             this.registrarProductosToolStripMenuItem.Name = "registrarProductosToolStripMenuItem";
             this.registrarProductosToolStripMenuItem.Size = new System.Drawing.Size(151, 24);
             this.registrarProductosToolStripMenuItem.Text = "Registrar productos";
-            this.registrarProductosToolStripMenuItem.Click += new System.EventHandler(this.registrarProductosToolStripMenuItem_Click);
             // 
             // almacenarPedidosToolStripMenuItem
             // 
@@ -95,11 +94,12 @@
             this.almacenarPedidosToolStripMenuItem.Name = "almacenarPedidosToolStripMenuItem";
             this.almacenarPedidosToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.almacenarPedidosToolStripMenuItem.Text = "Almacenar pedidos";
+            this.almacenarPedidosToolStripMenuItem.Click += new System.EventHandler(this.almacenarPedidosToolStripMenuItem_Click_1);
             // 
             // verPedidosToolStripMenuItem
             // 
             this.verPedidosToolStripMenuItem.Name = "verPedidosToolStripMenuItem";
-            this.verPedidosToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.verPedidosToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.verPedidosToolStripMenuItem.Text = "Ver pedidos";
             this.verPedidosToolStripMenuItem.Click += new System.EventHandler(this.verPedidosToolStripMenuItem_Click);
             // 
@@ -119,7 +119,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(658, 267);
             this.dataGridView1.TabIndex = 10;
             // 
-            // Form3
+            // verPedidos
             // 
             this.AccessibleName = "verPedidos";
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -130,8 +130,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuPedidos);
-            this.Name = "Form3";
+            this.Name = "verPedidos";
             this.Text = "Pedidos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.verPedidos_FormClosing);
             this.Load += new System.EventHandler(this.Form3_Load);
             this.menuPedidos.ResumeLayout(false);
             this.menuPedidos.PerformLayout();
