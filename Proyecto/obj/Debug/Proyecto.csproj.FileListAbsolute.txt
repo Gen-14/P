@@ -12,3 +12,6 @@ C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto
 C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.csprojResolveAssemblyReference.cache
 C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.menu.resources
 C:\Users\genes\OneDrive\Documentos\Visual Studio 2013\Projects\Proyecto\Proyecto\obj\Debug\Proyecto.Form4ReporteVentas.resources
+C:\Users\leipe\Desktop\proyecto_progra\P\Proyecto\bin\Debug\Proyecto.exe.config
+C:\Users\leipe\Desktop\proyecto_progra\P\Proyecto\obj\Debug\Proyecto.exe
+C:\Users\leipe\Desktop\proyecto_progra\P\Proyecto\obj\Debug\Proyecto.pdb
