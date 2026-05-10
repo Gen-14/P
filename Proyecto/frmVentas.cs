@@ -84,5 +84,36 @@ namespace Proyecto
                 );
             }
         }
+
+        private void menúToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            menu nuevoForm = new menu();
+            nuevoForm.Show();
+            this.Hide();
+        }
+
+        private void registrarProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProductos nuevoForm = new frmProductos();
+            nuevoForm.Show();
+            this.Hide();
+        }
+
+        private void almacenarPedidiosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pedidos nuevoForm = new pedidos();
+            nuevoForm.Show();
+            this.Hide();
+        }
+
+        private void registroDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void frmVentas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

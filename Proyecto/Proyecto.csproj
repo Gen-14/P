@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="agregarArchivos.cs" />
     <Compile Include="almacenarPedidos.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Datos.cs" />
@@ -84,7 +83,9 @@
     <Compile Include="frmVentas.Designer.cs">
       <DependentUpon>frmVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="lstProductos.cs" />
     <Compile Include="pedidos.cs" />
+    <Compile Include="producto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

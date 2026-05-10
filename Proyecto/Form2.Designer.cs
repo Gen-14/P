@@ -79,6 +79,7 @@
             this.registrarProductosToolStripMenuItem.Name = "registrarProductosToolStripMenuItem";
             this.registrarProductosToolStripMenuItem.Size = new System.Drawing.Size(151, 24);
             this.registrarProductosToolStripMenuItem.Text = "Registrar productos";
+            this.registrarProductosToolStripMenuItem.Click += new System.EventHandler(this.registrarProductosToolStripMenuItem_Click);
             // 
             // almacenarPedidosToolStripMenuItem
             // 
@@ -87,6 +88,7 @@
             this.almacenarPedidosToolStripMenuItem.Name = "almacenarPedidosToolStripMenuItem";
             this.almacenarPedidosToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.almacenarPedidosToolStripMenuItem.Text = "Almacenar pedidos";
+            this.almacenarPedidosToolStripMenuItem.Click += new System.EventHandler(this.almacenarPedidosToolStripMenuItem_Click);
             // 
             // verPedidosToolStripMenuItem
             // 
@@ -100,6 +102,7 @@
             this.registroDeVentasToolStripMenuItem.Name = "registroDeVentasToolStripMenuItem";
             this.registroDeVentasToolStripMenuItem.Size = new System.Drawing.Size(143, 24);
             this.registroDeVentasToolStripMenuItem.Text = "Registro de ventas";
+            this.registroDeVentasToolStripMenuItem.Click += new System.EventHandler(this.registroDeVentasToolStripMenuItem_Click);
             // 
             // listView1
             // 
@@ -266,6 +269,7 @@
             this.MainMenuStrip = this.menuPedidos;
             this.Name = "pedidos";
             this.Text = "Almacenar Pedidos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.pedidos_FormClosing);
             this.Load += new System.EventHandler(this.pedidos_Load);
             this.menuPedidos.ResumeLayout(false);
             this.menuPedidos.PerformLayout();

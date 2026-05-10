@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Proyecto
+{
+    public static class lstProductos
+    {
+        public static   List<producto> listaProductos = new List<producto>();
+    }
+}
