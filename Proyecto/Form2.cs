@@ -13,7 +13,7 @@ namespace Proyecto
 {
     public partial class pedidos : Form
     {
-       
+
         public pedidos()
         {
             InitializeComponent();
@@ -33,27 +33,39 @@ namespace Proyecto
         public void bAgregar_Click(object sender, EventArgs e)
         {
             int nuevoID = 1;
-
-            if (Datos.ListaPedidos.Count > 0)
+            try
             {
-                nuevoID = Datos.ListaPedidos.Max(p => p.id) + 1;
+                if (string.IsNullOrWhiteSpace(tbCliente.Text) || string.IsNullOrWhiteSpace(tbProductos.Text))
+                //string.IsNullOrWhiteSpace(txtCantidad.Text))
+                {
+                    MessageBox.Show("Debe completar todos los campos");
+                    return;
+                }
+                if (Datos.ListaPedidos.Count > 0)
+                {
+                    nuevoID = Datos.ListaPedidos.Max(p => p.id) + 1;
+                }
+                pedido nuevo = new pedido()
+                {
+                    id = nuevoID,
+                    fecha = dtFecha.Value,
+                    cliente = tbCliente.Text,
+                    productos = tbProductos.Text,
+                    estado = estado.Text
+                };
+                Datos.ListaPedidos.Add(nuevo);
+                //carga los datos ingresados en la tabla y muestra un mensaje
+                //Hacer el archivo de txt
+                pedido.archivoTxt();
+                cargarDatos();
+                limpiarCampos();
+
+                MessageBox.Show("Pedido agregado correctamente");
             }
-            pedido nuevo = new pedido()
+            catch (Exception ex)
             {
-                id = nuevoID,
-                fecha = dtFecha.Value,
-                cliente = tbCliente.Text,
-                productos = tbProductos.Text,
-                estado = estado.Text
-            };
-            Datos.ListaPedidos.Add(nuevo);
-            //carga los datos ingresados en la tabla y muestra un mensaje
-            //Hacer el archivo de txt
-            pedido.archivoTxt();
-            cargarDatos();
-            limpiarCampos();
-
-            MessageBox.Show("Pedido agregado correctamente");
+                MessageBox.Show("Ocurrió un error: " + ex.Message);
+            }
         }
         //metodo que limpia los campos de texto 
         private void limpiarCampos()
@@ -111,9 +123,8 @@ namespace Proyecto
         {
             frmProductos nuevoForm = new frmProductos();
             nuevoForm.Show();
-            this.Hide();
+            this.Close();
         }
-
         private void almacenarPedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pedidos nuevoForm = new pedidos();
