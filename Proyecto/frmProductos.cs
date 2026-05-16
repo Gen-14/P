@@ -6,8 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace Proyecto
 {
@@ -26,20 +27,41 @@ namespace Proyecto
 
             foreach (producto p in lstProductos.listaProductos)
             {
-                sw.WriteLine(
-                    p.IdProducto + "," +
-                    p.NombreProducto + "," +
-                    p.Precio + "," +
-                    p.StockProducto + "," +
-                    p.CategoriaProducto
-                );
-            }
+                // PERECEDEROS
+                if (p.Categoria == "Perecedero")
+                {
+                    producto.productoPerecedero pe =
+                    (producto.productoPerecedero)p;
+                    sw.WriteLine(
+                        p.Id + "," +
+                        p.Nombre + "," +
+                        p.Categoria + "," +
+                        p.Precio + "," +
+                        p.Cantidad + "," +
+                        p.FechaVencimiento + "," +
+                        p.Temperatura
+                    );
+                }
 
+                // ELECTRONICOS
+                else if (p.Categoria == "Electronico")
+                {
+                    producto.productoElectronico pe = (producto.productoElectronico)p;
+                    sw.WriteLine(
+                        p.Id + "," +
+                        p.Nombre + "," +
+                        p.Categoria + "," +
+                        p.Precio + "," +
+                        p.Cantidad + "," +
+                        p.Garantia + "," +
+                        p.Voltaje
+                    );
+                }
+            }
             sw.Close();
         }
 
-
-
+        //ESCONDE LOS DATOS DE LAS CATEGORIAS 
         private void cCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cCategoria.SelectedItem == null)
@@ -65,6 +87,11 @@ namespace Proyecto
         }
         private void frmProductos_Load(object sender, EventArgs e)
         {
+            //LLAMA A UN METODO
+            CargarProductos();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = lstProductos.listaProductos;
+
             //cCategoria.Items.Add("Perecederos");
             //cCategoria.Items.Add("Electronicos");
             panelPerecederos.Visible = false;
@@ -105,22 +132,6 @@ namespace Proyecto
         //
         private void bGuardar_Click(object sender, EventArgs e)
         {
-            producto nuevo = new producto(
-            int.Parse(tID.Text),
-            tNombreProducto.Text,
-            decimal.Parse(tPrecio.Text),
-            int.Parse(nStock.Text),
-            cCategoria.Text
-  );
-
-            lstProductos.listaProductos.Add(nuevo);
-
-            archivoTxt();
-
-            MessageBox.Show("Producto guardado");
-
-
-
             string nombreProducto = tNombreProducto.Text;
             decimal precioBase = Convert.ToDecimal(tPrecio.Text);
             string categoriaProducto = cCategoria.Text;
@@ -134,93 +145,145 @@ namespace Proyecto
             }
 
             decimal utilidadProducto = nUtilidad.Value;
-            DateTime fechaVencimiento = dVencimiento.Value;
+           // DateTime fechaVencimiento = dVencimiento.Text;
             decimal temperatura = nTemperatura.Value;
             string garantia = tGarantia.Text;
             int voltaje = int.Parse(nVoltaje.Text);
 
             decimal total = precioBase + (precioBase * utilidadProducto / 100);
 
-            string datos = "";
+            //string datos = "";
             //muestra los datos de los producto en el dataGribView
-            if (categoriaProducto == "Perecederos")
-            {
-                productoPerecedero p = new productoPerecedero(
-                    idProducto,
-                    nombreProducto,
-                    total,
-                    stockProducto,
-                    categoriaProducto,
-                    dVencimiento.Value,
-                    nTemperatura.Value
-                );
 
-                dataGridView1.Rows.Add(
-                    p.IdProducto,
-                    p.NombreProducto,
-                    p.Precio,
-                    p.StockProducto,
-                    p.CategoriaProducto,
-                    p.FechaVencimiento.ToShortDateString(),
-                    p.Temperatura,
-                    "",
-                    ""
-                );
-            }
-            else if (categoriaProducto == "Electronicos")
-            {
-                productoElectronico electronico = new productoElectronico(
-                    idProducto,
-                    nombreProducto,
-                    total,
-                    stockProducto,
-                    categoriaProducto,
-                    Convert.ToInt32(tGarantia.Text),
-                    (int)nVoltaje.Value
-                );
+            /*productoElectronico q = new productoElectronico();
 
-                dataGridView1.Rows.Add(
-                    electronico.IdProducto,
-                    electronico.NombreProducto,
-                    electronico.Precio,
-                    electronico.StockProducto,
-                    electronico.CategoriaProducto,
-                    "",
-                    "",
-                    electronico.Garantia + " meses",
-                    electronico.Voltaje
-                );
+            q.Id = tID.Text;
+            q.Nombre = tNombreProducto.Text;
+            q.Precio = Convert.ToDouble(tPrecio.Text);
+            q.Cantidad = Convert.ToInt32(nStock.Text);
+            q.Categoria = cCategoria.Text;
+
+            q.Garantia = tGarantia.Text;
+            q.Voltaje = nVoltaje.Text;*/
                 //listaProductos.Add(electronico);
-            }
-             
-            //evita que el usuario deje espacios en blanco
-
-            if (string.IsNullOrWhiteSpace(tNombreProducto.Text) ||
-                string.IsNullOrWhiteSpace(tPrecio.Text) ||
-                string.IsNullOrWhiteSpace(tGarantia.Text) ||
-                string.IsNullOrWhiteSpace(tID.Text) ) 
+           
+            try
             {
-                MessageBox.Show("Debe completar todos los campos");
-                return;
+                if (string.IsNullOrWhiteSpace(tNombreProducto.Text))
+                {
+                    MessageBox.Show("Debe ingresar un valor");
+                }
+                else if (cCategoria.Text == "Perecedero")
+                {
+                    producto.productoPerecedero p = new producto.productoPerecedero();
+
+                        p.Id = tID.Text;
+                        p.Nombre = tNombreProducto.Text;
+                        p.Precio = total;
+                        p.Cantidad = Convert.ToInt32(nStock.Text);
+                        p.Categoria = cCategoria.Text;
+                        p.FechaVencimiento = dVencimiento.Value;
+                        p.Temperatura = nTemperatura.Value;
+
+                    //LO AGREGA Y HACE EL ARCHIVO DE TXT
+                    lstProductos.listaProductos.Add(p);
+                    archivoTxt();
+
+                }
+                else if(cCategoria.Text == "Electronico")
+                {
+                    producto.productoElectronico q = new producto.productoElectronico();
+
+                    q.Id = tID.Text;
+                    q.Nombre = tNombreProducto.Text;
+                    q.Precio = total;
+                    q.Cantidad = Convert.ToInt32(nStock.Text);
+                    q.Categoria = cCategoria.Text;
+
+                    q.Garantia = tGarantia.Text;
+                    q.Voltaje = nVoltaje.Text;
+
+                    //LO AGREGA Y HACE EL ARCHIVO DE TXT
+                    lstProductos.listaProductos.Add(q);
+                    archivoTxt();
+                    dataGridView1.Rows.Add(q);
+                }  
+                
             }
-              /* if (tNombreProducto.Text == "" || tPrecio.Text == "" || tID.Text == "")
-               {
-                   MessageBox.Show("Complete todos los campos");
-                   return;
-               }*/
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado " + ex.Message);
+            }
             LimpiarCampos();
-
-            dataGridView1.Rows.Add(datos);
-
+            //archivoTxt();
             //muestra un mesaje de que se guardo 
              MessageBox.Show("Guardado");
 
         }
-        //navegar en el menú
+        //metodo para que carguen los productos cunado abre el programa
+        public void CargarProductos()
+        {
+            lstProductos.listaProductos.Clear();
 
-       //metodo para guardar los productos en un archivo de texto
+            if (File.Exists("productos.txt"))
+            {
+                StreamReader leer = new StreamReader("productos.txt");
 
+                while (!leer.EndOfStream)
+                {
+                    string linea = leer.ReadLine();
+
+                    if (linea.Trim() == "")
+                    {
+                        continue;
+                    }
+
+                    string[] datos = linea.Split(',');
+                    // PERECEDEROS
+                    if (datos[2] == "Perecedero")
+                    {
+                        producto.productoPerecedero p =
+                        new producto.productoPerecedero(
+
+                            datos[0],
+                            datos[1], 
+                            datos[2],
+                            Convert.ToDecimal(datos[3]),
+                            Convert.ToInt16(datos[4]),
+                            Convert.ToDateTime(datos[5]),
+                            Convert.ToDecimal(datos[6])
+                        );
+
+                        lstProductos.listaProductos.Add(p);
+                    }
+
+                    // ELECTRONICOS
+                    else if (datos[2] == "Electronico")
+                    {
+                        producto.productoElectronico e =
+                        new producto.productoElectronico(
+
+                            datos[0],
+                            datos[1],
+                            datos[2],
+                            Convert.ToDecimal(datos[3]),
+                            Convert.ToInt16(datos[4]),
+                            datos[4],
+                            datos[5]
+                        );
+
+                        lstProductos.listaProductos.Add(e);
+                    }
+                }
+
+                leer.Close();
+            }
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = lstProductos.listaProductos;
+        }
+
+       //MENU DE NAVEGACION <
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
         {
             menu nuevoForm = new menu();

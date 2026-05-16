@@ -1,1 +1,1 @@
-123,Helado,1300,100,Perecederos
+100,arroz,600,100,Perecederos
