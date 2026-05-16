@@ -110,20 +110,20 @@ namespace Proyecto
         {
             menu nuevoForm = new menu();
             nuevoForm.Show();
-            this.Close();
+            this.Hide();
         }
         private void verPedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             verPedidos nuevoForm = new verPedidos();
             nuevoForm.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void registrarProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmProductos nuevoForm = new frmProductos();
             nuevoForm.Show();
-            this.Close();
+            this.Hide();
         }
         private void almacenarPedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {

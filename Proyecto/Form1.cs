@@ -37,8 +37,7 @@ namespace Proyecto
             nuevoForm.Show();
             this.Hide();
         }
-
-        private void menu_FormClosed(object sender, FormClosedEventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

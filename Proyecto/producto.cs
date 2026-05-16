@@ -28,11 +28,6 @@ namespace Proyecto
         // CLASE HIJA PERECEDEROS
         public class productoPerecedero : producto
         {
-            private int idProducto;
-            private decimal total;
-            private DateTime dateTime;
-            private decimal p;
-
             public DateTime FechaVencimiento { get; set; }
             public decimal Temperatura { get; set; }
 
@@ -55,11 +50,6 @@ namespace Proyecto
         // clase hija que hereda de prodcutos
         public class productoElectronico : producto
         {
-            private int idProducto;
-            private decimal total;
-            private int p1;
-            private int p2;
-
             public int Garantia { get; set; }
             public int Voltaje { get; set; }
 

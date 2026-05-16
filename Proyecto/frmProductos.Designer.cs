@@ -47,7 +47,6 @@
             this.tPrecio = new System.Windows.Forms.TextBox();
             this.nUtilidad = new System.Windows.Forms.NumericUpDown();
             this.nStock = new System.Windows.Forms.NumericUpDown();
-            this.tID = new System.Windows.Forms.TextBox();
             this.dVencimiento = new System.Windows.Forms.DateTimePicker();
             this.nTemperatura = new System.Windows.Forms.NumericUpDown();
             this.tGarantia = new System.Windows.Forms.TextBox();
@@ -56,7 +55,6 @@
             this.panelElectronico = new System.Windows.Forms.Panel();
             this.cCategoria = new System.Windows.Forms.ComboBox();
             this.bGuardar = new System.Windows.Forms.Button();
-            this.lID = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUtilidad)).BeginInit();
@@ -70,6 +68,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Bisque;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menúToolStripMenuItem,
@@ -79,7 +78,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1213, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1203, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -95,7 +94,6 @@
             this.registrarProductosToolStripMenuItem.Name = "registrarProductosToolStripMenuItem";
             this.registrarProductosToolStripMenuItem.Size = new System.Drawing.Size(151, 24);
             this.registrarProductosToolStripMenuItem.Text = "Registrar productos";
-            this.registrarProductosToolStripMenuItem.Click += new System.EventHandler(this.registrarProductosToolStripMenuItem_Click);
             // 
             // almacenarPedidosToolStripMenuItem
             // 
@@ -123,7 +121,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 42);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(39, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(196, 24);
             this.label1.TabIndex = 1;
@@ -132,7 +132,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 101);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(39, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 24);
             this.label2.TabIndex = 2;
@@ -141,7 +143,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(58, 151);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(39, 192);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 24);
             this.label3.TabIndex = 3;
@@ -150,7 +154,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(58, 224);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(39, 245);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 24);
             this.label4.TabIndex = 4;
@@ -159,7 +165,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(58, 351);
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(39, 301);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 24);
             this.label5.TabIndex = 5;
@@ -203,38 +211,32 @@
             // 
             // tNombreProducto
             // 
-            this.tNombreProducto.Location = new System.Drawing.Point(275, 42);
+            this.tNombreProducto.BackColor = System.Drawing.Color.White;
+            this.tNombreProducto.Location = new System.Drawing.Point(256, 83);
             this.tNombreProducto.Name = "tNombreProducto";
             this.tNombreProducto.Size = new System.Drawing.Size(156, 28);
             this.tNombreProducto.TabIndex = 16;
             // 
             // tPrecio
             // 
-            this.tPrecio.Location = new System.Drawing.Point(275, 97);
+            this.tPrecio.Location = new System.Drawing.Point(256, 138);
             this.tPrecio.Name = "tPrecio";
             this.tPrecio.Size = new System.Drawing.Size(156, 28);
             this.tPrecio.TabIndex = 17;
             // 
             // nUtilidad
             // 
-            this.nUtilidad.Location = new System.Drawing.Point(275, 151);
+            this.nUtilidad.Location = new System.Drawing.Point(256, 192);
             this.nUtilidad.Name = "nUtilidad";
             this.nUtilidad.Size = new System.Drawing.Size(156, 28);
             this.nUtilidad.TabIndex = 23;
             // 
             // nStock
             // 
-            this.nStock.Location = new System.Drawing.Point(275, 220);
+            this.nStock.Location = new System.Drawing.Point(256, 261);
             this.nStock.Name = "nStock";
             this.nStock.Size = new System.Drawing.Size(156, 28);
             this.nStock.TabIndex = 24;
-            // 
-            // tID
-            // 
-            this.tID.Location = new System.Drawing.Point(275, 291);
-            this.tID.Name = "tID";
-            this.tID.Size = new System.Drawing.Size(156, 28);
-            this.tID.TabIndex = 25;
             // 
             // dVencimiento
             // 
@@ -266,22 +268,26 @@
             // 
             // panelPerecederos
             // 
+            this.panelPerecederos.BackColor = System.Drawing.Color.Transparent;
             this.panelPerecederos.Controls.Add(this.label6);
             this.panelPerecederos.Controls.Add(this.dVencimiento);
             this.panelPerecederos.Controls.Add(this.label7);
             this.panelPerecederos.Controls.Add(this.nTemperatura);
-            this.panelPerecederos.Location = new System.Drawing.Point(228, 391);
+            this.panelPerecederos.ForeColor = System.Drawing.Color.White;
+            this.panelPerecederos.Location = new System.Drawing.Point(220, 391);
             this.panelPerecederos.Name = "panelPerecederos";
             this.panelPerecederos.Size = new System.Drawing.Size(269, 207);
             this.panelPerecederos.TabIndex = 31;
             // 
             // panelElectronico
             // 
+            this.panelElectronico.BackColor = System.Drawing.Color.Transparent;
             this.panelElectronico.Controls.Add(this.label8);
             this.panelElectronico.Controls.Add(this.tGarantia);
             this.panelElectronico.Controls.Add(this.nVoltaje);
             this.panelElectronico.Controls.Add(this.label9);
-            this.panelElectronico.Location = new System.Drawing.Point(249, 391);
+            this.panelElectronico.ForeColor = System.Drawing.Color.White;
+            this.panelElectronico.Location = new System.Drawing.Point(231, 391);
             this.panelElectronico.Name = "panelElectronico";
             this.panelElectronico.Size = new System.Drawing.Size(245, 214);
             this.panelElectronico.TabIndex = 32;
@@ -292,7 +298,7 @@
             this.cCategoria.Items.AddRange(new object[] {
             "Perecederos",
             "Electronicos"});
-            this.cCategoria.Location = new System.Drawing.Point(275, 345);
+            this.cCategoria.Location = new System.Drawing.Point(256, 326);
             this.cCategoria.Name = "cCategoria";
             this.cCategoria.Size = new System.Drawing.Size(156, 30);
             this.cCategoria.TabIndex = 33;
@@ -300,43 +306,37 @@
             // 
             // bGuardar
             // 
-            this.bGuardar.Location = new System.Drawing.Point(810, 445);
+            this.bGuardar.BackColor = System.Drawing.Color.Wheat;
+            this.bGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bGuardar.Location = new System.Drawing.Point(812, 413);
             this.bGuardar.Name = "bGuardar";
             this.bGuardar.Size = new System.Drawing.Size(115, 39);
             this.bGuardar.TabIndex = 34;
             this.bGuardar.Text = "Guardar";
-            this.bGuardar.UseVisualStyleBackColor = true;
+            this.bGuardar.UseVisualStyleBackColor = false;
             this.bGuardar.Click += new System.EventHandler(this.bGuardar_Click);
-            // 
-            // lID
-            // 
-            this.lID.AutoSize = true;
-            this.lID.Location = new System.Drawing.Point(58, 291);
-            this.lID.Name = "lID";
-            this.lID.Size = new System.Drawing.Size(27, 24);
-            this.lID.TabIndex = 35;
-            this.lID.Text = "ID";
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(520, 42);
+            this.dataGridView1.Location = new System.Drawing.Point(492, 97);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(670, 243);
+            this.dataGridView1.Size = new System.Drawing.Size(683, 278);
             this.dataGridView1.TabIndex = 37;
             // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(1213, 695);
+            this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImage = global::Proyecto.Properties.Resources.background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1203, 631);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.lID);
             this.Controls.Add(this.bGuardar);
             this.Controls.Add(this.cCategoria);
-            this.Controls.Add(this.tID);
             this.Controls.Add(this.nStock);
             this.Controls.Add(this.nUtilidad);
             this.Controls.Add(this.tPrecio);
@@ -347,8 +347,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panelPerecederos);
             this.Controls.Add(this.panelElectronico);
+            this.Controls.Add(this.panelPerecederos);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -389,7 +389,6 @@
         private System.Windows.Forms.TextBox tPrecio;
         private System.Windows.Forms.NumericUpDown nUtilidad;
         private System.Windows.Forms.NumericUpDown nStock;
-        private System.Windows.Forms.TextBox tID;
         private System.Windows.Forms.DateTimePicker dVencimiento;
         private System.Windows.Forms.NumericUpDown nTemperatura;
         private System.Windows.Forms.TextBox tGarantia;
@@ -398,7 +397,6 @@
         private System.Windows.Forms.Panel panelElectronico;
         private System.Windows.Forms.ComboBox cCategoria;
         private System.Windows.Forms.Button bGuardar;
-        private System.Windows.Forms.Label lID;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem registrarProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem almacenarPedidosToolStripMenuItem;
