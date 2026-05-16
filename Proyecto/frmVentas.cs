@@ -9,30 +9,39 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proyecto
-{
-    public partial class frmVentas : Form
+{ public partial class frmVentas : Form
     {
-       
-         string[] meses = new string[12];
+        // MATRIZ
+        double[,] reporteVentas = new double[12, 2];
 
-         string[] productos = new string[100];
+        string[] meses = new string[12];
 
-         string[] categorias = new string[100];
+        string[] productos = new string[100];
 
-         int[] cantidades = new int[100];
+        string[] categorias = new string[100];
 
-         int contador = 0;
-         string[] ventasMes = new string[100];
+        int[] cantidadad = new int[100];
+
+        int contador = 0;
+
+        string[] ventasMes = new string[100];
+
         public frmVentas()
         {
             InitializeComponent();
         }
+
         public class Venta
         {
             public string Producto { get; set; }
+
             public string Categoria { get; set; }
+
             public int Cantidad { get; set; }
+
             public DateTime Fecha { get; set; }
+
+            public double Precio { get; set; }
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -50,21 +59,49 @@ namespace Proyecto
             meses[10] = "Noviembre";
             meses[11] = "Diciembre";
 
-            //ventasMes.Items.AddRange(meses);
-
-            //cbCategoria.Items.Add("Perecedero");
-            //cbCategoria.Items.Add("Electrónico");
-
-            dataGridReporte.ColumnCount = 4;
+            dataGridReporte.ColumnCount = 3;
 
             dataGridReporte.Columns[0].Name = "Mes";
-            dataGridReporte.Columns[1].Name = "Producto";
-            dataGridReporte.Columns[2].Name = "Categoría";
-            dataGridReporte.Columns[3].Name = "Cantidad";
-
-
+            dataGridReporte.Columns[1].Name = "Perecederos";
+            dataGridReporte.Columns[2].Name = "Electronicos";
         }
 
+        // METODO PARA REGISTRAR VENTAS
+        public void RegistrarVenta(string categoria,
+              double precio,
+              int cantidad,
+              DateTime fecha)
+        {
+            double subtotal = precio * cantidad;
+
+            double totalConIVA = subtotal + (subtotal * 0.13);
+
+            int filaMes = fecha.Month - 1;
+
+            int columnaCategoria = 0;
+
+            if (categoria == "Electronicos")
+            {
+                columnaCategoria = 1;
+            }
+
+            reporteVentas[filaMes, columnaCategoria] += totalConIVA;
+        }
+
+        private void bReporte_Click(object sender, EventArgs e)
+        {
+            dataGridReporte.Rows.Clear();
+
+            for (int i = 0; i < 12; i++)
+            {
+                dataGridReporte.Rows.Add(
+                    meses[i],
+                    reporteVentas[i, 0],
+                    reporteVentas[i, 1]
+                );
+            }
+        }
+            /*
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -72,19 +109,25 @@ namespace Proyecto
 
         private void bReporte_Click(object sender, EventArgs e)
         {
-            dataGridReporte.Rows.Clear();
+            dataGridView1.Rows.Clear();
 
-            for (int i = 0; i < contador; i++)
+            string[] meses =
             {
-                dataGridReporte.Rows.Add(
-                    ventasMes[i],
-                    productos[i],
-                    categorias[i],
-                    cantidades[i]
+                "Enero","Febrero","Marzo","Abril",
+                "Mayo","Junio","Julio","Agosto",
+                "Septiembre","Octubre","Noviembre","Diciembre"
+            };
+
+            for (int i = 0; i < 12; i++)
+            {
+                dataGridView1.Rows.Add(
+                    meses[i],
+                    reporteVentas[i, 0],
+                    reporteVentas[i, 1]
                 );
             }
         }
-
+*/
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
         {
             menu nuevoForm = new menu();

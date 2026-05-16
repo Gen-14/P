@@ -34,8 +34,8 @@
             this.menúToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.almacenarPedidiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verPedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReporte)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -48,11 +48,11 @@
             this.dataGridReporte.RowTemplate.Height = 24;
             this.dataGridReporte.Size = new System.Drawing.Size(949, 344);
             this.dataGridReporte.TabIndex = 0;
-            this.dataGridReporte.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+           // this.dataGridReporte.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // bReporte
             // 
-            this.bReporte.Location = new System.Drawing.Point(505, 469);
+            this.bReporte.Location = new System.Drawing.Point(448, 471);
             this.bReporte.Name = "bReporte";
             this.bReporte.Size = new System.Drawing.Size(173, 36);
             this.bReporte.TabIndex = 1;
@@ -97,6 +97,12 @@
             this.almacenarPedidiosToolStripMenuItem.Text = "Almacenar Pedidios";
             this.almacenarPedidiosToolStripMenuItem.Click += new System.EventHandler(this.almacenarPedidiosToolStripMenuItem_Click);
             // 
+            // verPedidosToolStripMenuItem
+            // 
+            this.verPedidosToolStripMenuItem.Name = "verPedidosToolStripMenuItem";
+            this.verPedidosToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
+            this.verPedidosToolStripMenuItem.Text = "Ver Pedidos";
+            // 
             // registroDeVentasToolStripMenuItem
             // 
             this.registroDeVentasToolStripMenuItem.Name = "registroDeVentasToolStripMenuItem";
@@ -104,17 +110,11 @@
             this.registroDeVentasToolStripMenuItem.Text = "Registro de Ventas";
             this.registroDeVentasToolStripMenuItem.Click += new System.EventHandler(this.registroDeVentasToolStripMenuItem_Click);
             // 
-            // verPedidosToolStripMenuItem
-            // 
-            this.verPedidosToolStripMenuItem.Name = "verPedidosToolStripMenuItem";
-            this.verPedidosToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.verPedidosToolStripMenuItem.Text = "Ver Pedidos";
-            // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PowderBlue;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(1125, 624);
             this.Controls.Add(this.bReporte);
             this.Controls.Add(this.dataGridReporte);
