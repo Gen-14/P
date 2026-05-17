@@ -6,9 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.IO;
 using System.Globalization;
-using System.Windows.Forms;
+
 
 namespace Proyecto
 {
@@ -314,7 +315,6 @@ namespace Proyecto
                 );
                 return;
             }
-
             dataGridView1.Rows.Add(
                 p.IdProducto,
                 p.NombreProducto,
@@ -327,9 +327,7 @@ namespace Proyecto
                 ""
             );
         }
-        //navegar en el menú
-       //metodo para guardar los productos en un archivo de texto
-
+        //MENU DE NAVEGACION <
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
         {
             menu nuevoForm = new menu();

@@ -1,70 +1,90 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Proyecto
 {
     public class producto
     {
-            public int IdProducto { get; set; }
-            public string NombreProducto { get; set; }
-            public decimal Precio { get; set; }
-            public int StockProducto { get; set; }
-            public string CategoriaProducto { get; set; }
+        public int IdProducto { get; set; }
+        public string NombreProducto { get; set; }
+        public decimal Precio { get; set; }
+        public int StockProducto { get; set; }
+        public string CategoriaProducto { get; set; }
 
-            // Constructor
-            public producto(int id, string nombre, decimal precio, int stock, string categoria)
+        public producto()
+        {
+        }
+
+        public producto(int idProducto, string nombreProducto, decimal precio, int stockProducto, string categoriaProducto)
+        {
+            IdProducto = idProducto;
+            NombreProducto = nombreProducto;
+            Precio = precio;
+            StockProducto = stockProducto;
+            CategoriaProducto = categoriaProducto;
+        }
+
+        public string Id
+        {
+            get { return IdProducto.ToString(); }
+            set
             {
-                IdProducto = id;
-                NombreProducto = nombre;
-                Precio = precio;
-                StockProducto = stock;
-                CategoriaProducto = categoria;
+                int id;
+                IdProducto = int.TryParse(value, out id) ? id : 0;
             }
         }
 
-        // CLASE HIJA PERECEDEROS
-        public class productoPerecedero : producto
+        public string Nombre
         {
-            public DateTime FechaVencimiento { get; set; }
-            public decimal Temperatura { get; set; }
-
-            public productoPerecedero(
-                int id,
-                string nombre,
-                decimal precio,
-                int stock,
-                string categoria,
-                DateTime fechaVencimiento,
-                decimal temperatura)
-                : base(id, nombre, precio, stock, categoria)
-            {
-                FechaVencimiento = fechaVencimiento;
-                Temperatura = temperatura;
-            }
-
+            get { return NombreProducto; }
+            set { NombreProducto = value; }
         }
 
-        // clase hija que hereda de prodcutos
-        public class productoElectronico : producto
+        public string Categoria
         {
-            public int Garantia { get; set; }
-            public int Voltaje { get; set; }
+            get { return CategoriaProducto; }
+            set { CategoriaProducto = value; }
+        }
 
-            public productoElectronico(
-                int id,
-                string nombre,
-                decimal precio,
-                int stock,
-                string categoria,
-                int garantia,
-                int voltaje)
-                : base(id, nombre, precio, stock, categoria)
-            {
-                Garantia = garantia;
-                Voltaje = voltaje;
-            }
+        public int Cantidad
+        {
+            get { return StockProducto; }
+            set { StockProducto = value; }
         }
     }
+
+    public class productoPerecedero : producto
+    {
+        public DateTime FechaVencimiento { get; set; }
+        public decimal Temperatura { get; set; }
+
+        public productoPerecedero()
+        {
+        }
+
+        public productoPerecedero(int idProducto, string nombreProducto, decimal precio, int stockProducto,
+            string categoriaProducto, DateTime fechaVencimiento, decimal temperatura)
+            : base(idProducto, nombreProducto, precio, stockProducto, categoriaProducto)
+        {
+            FechaVencimiento = fechaVencimiento;
+            Temperatura = temperatura;
+        }
+    }
+
+    public class productoElectronico : producto
+    {
+        public int Garantia { get; set; }
+        public int Voltaje { get; set; }
+
+        public productoElectronico()
+        {
+        }
+
+        public productoElectronico(int idProducto, string nombreProducto, decimal precio, int stockProducto,
+            string categoriaProducto, int garantia, int voltaje)
+            : base(idProducto, nombreProducto, precio, stockProducto, categoriaProducto)
+        {
+            Garantia = garantia;
+            Voltaje = voltaje;
+        }
+    }
+}
