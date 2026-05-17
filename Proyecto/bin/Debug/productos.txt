@@ -1,4 +1,3 @@
-1|Iphone 15|1000000|94|Electronicos|||12|28
-2|Galleta Maria|1600|50|Perecederos|2026-07-08|29||
-3|Sandia|1000|20|Perecederos|2026-05-31|25||
-4|Laptop Lenovo|779000|21|Electronicos|||24|45
+1|Laptop Lenovo|560000|24|Electronicos|||24|25
+2|Galletas Pozuelo|1300|50|Perecederos|2026-11-12|30||
+3|Celular Samsung|128000|53|Electronicos|||24|15

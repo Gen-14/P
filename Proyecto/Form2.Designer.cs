@@ -45,10 +45,10 @@
             this.estado = new System.Windows.Forms.ComboBox();
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tbProductos = new System.Windows.Forms.TextBox();
             this.tbCliente = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.menuPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -111,7 +111,7 @@
             this.bAgregar.BackColor = System.Drawing.Color.Wheat;
             this.bAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bAgregar.Location = new System.Drawing.Point(55, 402);
+            this.bAgregar.Location = new System.Drawing.Point(50, 423);
             this.bAgregar.Name = "bAgregar";
             this.bAgregar.Size = new System.Drawing.Size(104, 34);
             this.bAgregar.TabIndex = 2;
@@ -124,12 +124,13 @@
             this.bCancelar.BackColor = System.Drawing.Color.Salmon;
             this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bCancelar.Location = new System.Drawing.Point(190, 402);
+            this.bCancelar.Location = new System.Drawing.Point(185, 423);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(104, 34);
             this.bCancelar.TabIndex = 3;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = false;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // label1
             // 
@@ -167,7 +168,7 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Modern No. 20", 10F);
-            this.textBox3.Location = new System.Drawing.Point(32, 161);
+            this.textBox3.Location = new System.Drawing.Point(32, 148);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(142, 25);
             this.textBox3.TabIndex = 8;
@@ -176,7 +177,7 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Modern No. 20", 10F);
-            this.textBox4.Location = new System.Drawing.Point(32, 230);
+            this.textBox4.Location = new System.Drawing.Point(32, 201);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(142, 25);
             this.textBox4.TabIndex = 10;
@@ -185,7 +186,7 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Modern No. 20", 10F);
-            this.textBox5.Location = new System.Drawing.Point(32, 292);
+            this.textBox5.Location = new System.Drawing.Point(32, 354);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(142, 25);
             this.textBox5.TabIndex = 11;
@@ -198,7 +199,7 @@
             this.estado.Items.AddRange(new object[] {
             "Pendiente",
             "Entregado"});
-            this.estado.Location = new System.Drawing.Point(199, 292);
+            this.estado.Location = new System.Drawing.Point(199, 354);
             this.estado.Name = "estado";
             this.estado.Size = new System.Drawing.Size(204, 24);
             this.estado.TabIndex = 12;
@@ -215,22 +216,15 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(544, 93);
+            this.dataGridView1.Location = new System.Drawing.Point(624, 70);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(439, 355);
             this.dataGridView1.TabIndex = 14;
             // 
-            // tbProductos
-            // 
-            this.tbProductos.Location = new System.Drawing.Point(199, 230);
-            this.tbProductos.Name = "tbProductos";
-            this.tbProductos.Size = new System.Drawing.Size(204, 22);
-            this.tbProductos.TabIndex = 15;
-            // 
             // tbCliente
             // 
-            this.tbCliente.Location = new System.Drawing.Point(199, 161);
+            this.tbCliente.Location = new System.Drawing.Point(199, 148);
             this.tbCliente.Name = "tbCliente";
             this.tbCliente.Size = new System.Drawing.Size(204, 22);
             this.tbCliente.TabIndex = 16;
@@ -241,7 +235,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Wheat;
-            this.label3.Location = new System.Drawing.Point(711, 49);
+            this.label3.Location = new System.Drawing.Point(797, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(140, 18);
             this.label3.TabIndex = 17;
@@ -249,11 +243,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.BackColor = System.Drawing.Color.Black;
+            this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.bAgregar);
-            this.groupBox1.Controls.Add(this.tbProductos);
             this.groupBox1.Controls.Add(this.dtFecha);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tbCliente);
@@ -263,12 +257,23 @@
             this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Location = new System.Drawing.Point(87, 104);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupBox1.Location = new System.Drawing.Point(40, 94);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1013, 478);
+            this.groupBox1.Size = new System.Drawing.Size(1099, 510);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "   ";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(32, 244);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBox1.Size = new System.Drawing.Size(196, 84);
+            this.listBox1.TabIndex = 18;
             // 
             // pedidos
             // 
@@ -315,9 +320,9 @@
         private System.Windows.Forms.ToolStripMenuItem verPedidosToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker dtFecha;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox tbProductos;
         private System.Windows.Forms.TextBox tbCliente;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

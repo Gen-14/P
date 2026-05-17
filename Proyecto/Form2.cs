@@ -22,6 +22,7 @@ namespace Proyecto
         private void pedidos_Load(object sender, EventArgs e)
         {
             cargaDatosTxt();
+            CargarProductos();
         }
         public void cargarDatos()
         {
@@ -35,7 +36,9 @@ namespace Proyecto
             int nuevoID = 1;
             try
             {
-                if (string.IsNullOrWhiteSpace(tbCliente.Text) || string.IsNullOrWhiteSpace(tbProductos.Text))
+                string productosSeleccionados = obtenerProductosSeleccionados();
+
+                if (string.IsNullOrWhiteSpace(tbCliente.Text))
                 //string.IsNullOrWhiteSpace(txtCantidad.Text))
                 {
                     MessageBox.Show("Debe completar todos los campos");
@@ -50,9 +53,16 @@ namespace Proyecto
                     id = nuevoID,
                     fecha = dtFecha.Value,
                     cliente = tbCliente.Text,
-                    productos = tbProductos.Text,
+                    productos = listBox1.Text,
                     estado = estado.Text
                 };
+                listBox1.Text = obtenerProductosSeleccionados();
+
+                if (string.IsNullOrWhiteSpace(listBox1.Text))
+                {
+                    MessageBox.Show("Debe seleccionar al menos un producto");
+                    return;
+                }
                 Datos.ListaPedidos.Add(nuevo);
                 //carga los datos ingresados en la tabla y muestra un mensaje
                 //Hacer el archivo de txt
@@ -67,12 +77,50 @@ namespace Proyecto
                 MessageBox.Show("Ocurrió un error: " + ex.Message);
             }
         }
-        //metodo que limpia los campos de texto 
-        private void limpiarCampos()
+        private string obtenerProductosSeleccionados()
         {
-            tbCliente.Text = "";
-            tbProductos.Text = "";
-            dtFecha.Value = DateTime.Now;
+            string productos = "";
+
+            foreach (var item in listBox1.SelectedItems)
+            {
+                if (productos == "")
+                {
+                    productos = item.ToString();
+                }
+                else
+                {
+                    productos = productos + " | " + item.ToString();
+                }
+            }
+
+            return productos;
+        }
+        //METODOS DE CARGAR LOS DATOS DE TXT Y DE LOS PRODUCTOS
+        private void CargarProductos()
+        {
+            listBox1.Items.Clear();
+
+            if (!File.Exists("productos.txt"))
+            {
+                return;
+            }
+
+            StreamReader sr = new StreamReader("productos.txt");
+
+            while (!sr.EndOfStream)
+            {
+                string linea = sr.ReadLine();
+
+                string[] datos = linea.Split('|');
+
+                // Mostrar ID y nombre
+                if (datos.Length >= 2)
+                {
+                    listBox1.Items.Add(datos[0] + " - " + datos[1]);
+                }
+            }
+
+            sr.Close();
         }
         public void cargaDatosTxt()
         {
@@ -105,6 +153,13 @@ namespace Proyecto
             cargarDatos();
         }
 
+        //metodo que limpia los campos de texto 
+        private void limpiarCampos()
+        {
+            tbCliente.Text = "";
+            listBox1.Text = "";
+            dtFecha.Value = DateTime.Now;
+        }
         //botones que abren otros formularios (menu)
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -142,6 +197,11 @@ namespace Proyecto
         private void pedidos_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
         }
     }
 }
