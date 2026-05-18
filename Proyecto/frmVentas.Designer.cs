@@ -46,15 +46,14 @@
             this.dataGridReporte.Location = new System.Drawing.Point(81, 83);
             this.dataGridReporte.Name = "dataGridReporte";
             this.dataGridReporte.RowTemplate.Height = 24;
-            this.dataGridReporte.Size = new System.Drawing.Size(949, 344);
+            this.dataGridReporte.Size = new System.Drawing.Size(649, 446);
             this.dataGridReporte.TabIndex = 0;
-           // this.dataGridReporte.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // bReporte
             // 
-            this.bReporte.Location = new System.Drawing.Point(448, 471);
+            this.bReporte.Location = new System.Drawing.Point(796, 270);
             this.bReporte.Name = "bReporte";
-            this.bReporte.Size = new System.Drawing.Size(173, 36);
+            this.bReporte.Size = new System.Drawing.Size(133, 46);
             this.bReporte.TabIndex = 1;
             this.bReporte.Text = "Generar Reporte";
             this.bReporte.UseVisualStyleBackColor = true;
@@ -115,7 +114,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(1125, 624);
+            this.ClientSize = new System.Drawing.Size(1125, 666);
             this.Controls.Add(this.bReporte);
             this.Controls.Add(this.dataGridReporte);
             this.Controls.Add(this.menuStrip1);

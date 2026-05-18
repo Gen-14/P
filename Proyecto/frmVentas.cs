@@ -6,25 +6,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Proyecto
 { public partial class frmVentas : Form
     {
+        private const string ArchivoProductos = "productos.txt";
+
         // MATRIZ
         double[,] reporteVentas = new double[12, 2];
 
         string[] meses = new string[12];
-
-        string[] productos = new string[100];
-
-        string[] categorias = new string[100];
-
-        int[] cantidadad = new int[100];
-
-        int contador = 0;
-
-        string[] ventasMes = new string[100];
 
         public frmVentas()
         {
@@ -46,6 +40,20 @@ namespace Proyecto
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            GenerarReporteVentas();
+        }
+
+        private void GenerarReporteVentas()
+        {
+            InicializarMeses();
+            ConfigurarGrid();
+            LimpiarReporte();
+            CargarProductosDesdeTxt();
+            CargarReporte();
+        }
+
+        private void InicializarMeses()
+        {
             meses[0] = "Enero";
             meses[1] = "Febrero";
             meses[2] = "Marzo";
@@ -58,14 +66,80 @@ namespace Proyecto
             meses[9] = "Octubre";
             meses[10] = "Noviembre";
             meses[11] = "Diciembre";
-
-            dataGridReporte.ColumnCount = 3;
-
-            dataGridReporte.Columns[0].Name = "Mes";
-            dataGridReporte.Columns[1].Name = "Perecederos";
-            dataGridReporte.Columns[2].Name = "Electronicos";
         }
 
+        private void ConfigurarGrid()
+        {
+            if (dataGridReporte.Columns.Count == 0)
+            {
+                dataGridReporte.ColumnCount = 3;
+                dataGridReporte.Columns[0].Name = "Mes";
+                dataGridReporte.Columns[1].Name = "Perecederos";
+                dataGridReporte.Columns[2].Name = "Electronicos";
+            }
+
+            dataGridReporte.AllowUserToAddRows = false;
+        }
+
+        private void LimpiarReporte()
+        {
+            for (int i = 0; i < 12; i++)
+            {
+                reporteVentas[i, 0] = 0;
+                reporteVentas[i, 1] = 0;
+            }
+        }
+
+        private void CargarProductosDesdeTxt()
+        {
+            if (!File.Exists(ArchivoProductos))
+            {
+                MessageBox.Show("No existe productos.txt");
+                return;
+            }
+
+            foreach (string linea in File.ReadAllLines(ArchivoProductos))
+            {
+                if (string.IsNullOrWhiteSpace(linea))
+                    continue;
+
+                string[] datos = linea.Split('|');
+
+                // Compatibilidad con archivos viejos separados por coma.
+                if (datos.Length == 1)
+                    datos = linea.Split(',');
+
+                if (datos.Length < 5)
+                    continue;
+
+                double precio;
+                int cantidad;
+
+                if (!double.TryParse(datos[2], NumberStyles.Any, CultureInfo.InvariantCulture, out precio) ||
+                    !int.TryParse(datos[3], out cantidad))
+                {
+                    continue;
+                }
+
+                string categoria = datos[4];
+                RegistrarVenta(categoria, precio, cantidad, DateTime.Now);
+            }
+        }
+
+        public void CargarReporte()
+        {
+            dataGridReporte.Rows.Clear();
+
+            for (int i = 0; i < 12; i++)
+            {
+                dataGridReporte.Rows.Add(
+                    meses[i],
+                    reporteVentas[i, 0],
+                    reporteVentas[i, 1]
+                );
+            }
+        }
+    
         // METODO PARA REGISTRAR VENTAS
         public void RegistrarVenta(string categoria,
               double precio,
@@ -87,47 +161,11 @@ namespace Proyecto
 
             reporteVentas[filaMes, columnaCategoria] += totalConIVA;
         }
-
         private void bReporte_Click(object sender, EventArgs e)
         {
-            dataGridReporte.Rows.Clear();
-
-            for (int i = 0; i < 12; i++)
-            {
-                dataGridReporte.Rows.Add(
-                    meses[i],
-                    reporteVentas[i, 0],
-                    reporteVentas[i, 1]
-                );
-            }
-        }
-            /*
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            GenerarReporteVentas();
         }
 
-        private void bReporte_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Rows.Clear();
-
-            string[] meses =
-            {
-                "Enero","Febrero","Marzo","Abril",
-                "Mayo","Junio","Julio","Agosto",
-                "Septiembre","Octubre","Noviembre","Diciembre"
-            };
-
-            for (int i = 0; i < 12; i++)
-            {
-                dataGridView1.Rows.Add(
-                    meses[i],
-                    reporteVentas[i, 0],
-                    reporteVentas[i, 1]
-                );
-            }
-        }
-*/
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
         {
             menu nuevoForm = new menu();
@@ -151,7 +189,7 @@ namespace Proyecto
 
         private void registroDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            GenerarReporteVentas();
         }
 
         private void frmVentas_FormClosing(object sender, FormClosingEventArgs e)
