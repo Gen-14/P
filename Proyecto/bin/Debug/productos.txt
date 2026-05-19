@@ -1,3 +1,0 @@
-1|Laptop Lenovo|560000|24|Electronicos|||24|25
-2|Galletas Pozuelo|1300|50|Perecederos|2026-11-12|30||
-3|Celular Samsung|128000|53|Electronicos|||24|15
