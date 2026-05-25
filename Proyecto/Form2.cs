@@ -53,12 +53,12 @@ namespace Proyecto
                     id = nuevoID,
                     fecha = dtFecha.Value,
                     cliente = tbCliente.Text,
-                    productos = listBox1.Text,
+                    productos = productosSeleccionados,
+                    cantidad = (int)numericUpDown1.Value,
                     estado = estado.Text
                 };
-                listBox1.Text = obtenerProductosSeleccionados();
 
-                if (string.IsNullOrWhiteSpace(listBox1.Text))
+                if (string.IsNullOrWhiteSpace(productosSeleccionados))
                 {
                     MessageBox.Show("Debe seleccionar al menos un producto");
                     return;
@@ -135,7 +135,7 @@ namespace Proyecto
 
                     string[] datos = linea.Split(',');
 
-                    if (datos.Length == 5)
+                    if (datos.Length >= 5)
                     {
                         pedido nuevo = new pedido()
                         {
@@ -143,7 +143,8 @@ namespace Proyecto
                             fecha = DateTime.Parse(datos[1]),
                             cliente = datos[2],
                             productos = datos[3],
-                            estado = datos[4]
+                            estado = datos[4],
+                            cantidad = datos.Length >= 6 ? int.Parse(datos[5]) : 1
                         };
 
                         Datos.ListaPedidos.Add(nuevo);
@@ -158,6 +159,8 @@ namespace Proyecto
         {
             tbCliente.Text = "";
             listBox1.Text = "";
+            listBox1.ClearSelected();
+            numericUpDown1.Value = 1;
             dtFecha.Value = DateTime.Now;
         }
         //botones que abren otros formularios (menu)

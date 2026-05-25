@@ -14,6 +14,7 @@ namespace Proyecto
         public DateTime fecha { get; set; }
         public string cliente { get; set; }
         public string productos { get; set; }
+        public int cantidad { get; set; }
         public string estado { get; set; }
 
         //creamos un  metódo que guarde los pedidos en un archivo de txt
@@ -24,7 +25,7 @@ namespace Proyecto
 
             foreach (pedido e in Datos.ListaPedidos)
             {
-                sw.WriteLine(e.id + "," + e.fecha.ToString("yyyy-MM-dd") + "," + e.cliente + "," + e.productos + "," + e.estado);
+                sw.WriteLine(e.id + "," + e.fecha.ToString("yyyy-MM-dd") + "," + e.cliente + "," + e.productos + "," + e.estado + "," + e.cantidad);
             }
 
             sw.Close();
