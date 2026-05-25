@@ -14,6 +14,7 @@ namespace Proyecto
 { public partial class frmVentas : Form
     {
         private const string ArchivoProductos = "productos.txt";
+        private const string ArchivoPedidos = "pedidos.txt";
 
         // MATRIZ
         double[,] reporteVentas = new double[12, 2];
@@ -38,6 +39,13 @@ namespace Proyecto
             public double Precio { get; set; }
         }
 
+        private class ProductoReporte
+        {
+            public double Precio { get; set; }
+
+            public string Categoria { get; set; }
+        }
+
         private void Form2_Load(object sender, EventArgs e)
         {
             GenerarReporteVentas();
@@ -45,11 +53,18 @@ namespace Proyecto
 
         private void GenerarReporteVentas()
         {
-            InicializarMeses();
-            ConfigurarGrid();
-            LimpiarReporte();
-            CargarProductosDesdeTxt();
-            CargarReporte();
+            try
+            {
+                InicializarMeses();
+                ConfigurarGrid();
+                LimpiarReporte();
+                CargarVentasDesdePedidos();
+                CargarReporte();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al generar el reporte de ventas: " + ex.Message);
+            }
         }
 
         private void InicializarMeses()
@@ -70,15 +85,14 @@ namespace Proyecto
 
         private void ConfigurarGrid()
         {
-            if (dataGridReporte.Columns.Count == 0)
-            {
-                dataGridReporte.ColumnCount = 3;
-                dataGridReporte.Columns[0].Name = "Mes";
-                dataGridReporte.Columns[1].Name = "Perecederos";
-                dataGridReporte.Columns[2].Name = "Electronicos";
-            }
+            dataGridReporte.Columns.Clear();
+            dataGridReporte.ColumnCount = 3;
+            dataGridReporte.Columns[0].Name = "Mes";
+            dataGridReporte.Columns[1].Name = "Perecederos";
+            dataGridReporte.Columns[2].Name = "Electronicos";
 
             dataGridReporte.AllowUserToAddRows = false;
+            dataGridReporte.ReadOnly = true;
         }
 
         private void LimpiarReporte()
@@ -90,12 +104,14 @@ namespace Proyecto
             }
         }
 
-        private void CargarProductosDesdeTxt()
+        private Dictionary<int, ProductoReporte> CargarProductosDesdeTxt()
         {
+            Dictionary<int, ProductoReporte> productos = new Dictionary<int, ProductoReporte>();
+
             if (!File.Exists(ArchivoProductos))
             {
                 MessageBox.Show("No existe productos.txt");
-                return;
+                return productos;
             }
 
             foreach (string linea in File.ReadAllLines(ArchivoProductos))
@@ -112,18 +128,81 @@ namespace Proyecto
                 if (datos.Length < 5)
                     continue;
 
+                int idProducto;
                 double precio;
-                int cantidad;
 
-                if (!double.TryParse(datos[2], NumberStyles.Any, CultureInfo.InvariantCulture, out precio) ||
-                    !int.TryParse(datos[3], out cantidad))
+                if (!int.TryParse(datos[0], out idProducto) ||
+                    !double.TryParse(datos[2], NumberStyles.Any, CultureInfo.InvariantCulture, out precio))
                 {
                     continue;
                 }
 
-                string categoria = datos[4];
-                RegistrarVenta(categoria, precio, cantidad, DateTime.Now);
+                productos[idProducto] = new ProductoReporte()
+                {
+                    Precio = precio,
+                    Categoria = datos[4].Trim()
+                };
             }
+
+            return productos;
+        }
+
+        private void CargarVentasDesdePedidos()
+        {
+            Dictionary<int, ProductoReporte> productos = CargarProductosDesdeTxt();
+
+            if (!File.Exists(ArchivoPedidos))
+            {
+                MessageBox.Show("No existe pedidos.txt");
+                return;
+            }
+
+            foreach (string linea in File.ReadAllLines(ArchivoPedidos))
+            {
+                if (string.IsNullOrWhiteSpace(linea))
+                    continue;
+
+                string[] datos = linea.Split(',');
+
+                if (datos.Length < 4)
+                    continue;
+
+                DateTime fechaPedido;
+
+                if (!DateTime.TryParse(datos[1], out fechaPedido))
+                    continue;
+
+                foreach (string productoPedido in datos[3].Split('|'))
+                {
+                    int idProducto;
+
+                    if (!ObtenerIdProducto(productoPedido, out idProducto))
+                        continue;
+
+                    ProductoReporte producto;
+
+                    if (!productos.TryGetValue(idProducto, out producto))
+                        continue;
+
+                    RegistrarVenta(producto.Categoria, producto.Precio, 1, fechaPedido);
+                }
+            }
+        }
+
+        private bool ObtenerIdProducto(string productoPedido, out int idProducto)
+        {
+            idProducto = 0;
+
+            if (string.IsNullOrWhiteSpace(productoPedido))
+                return false;
+
+            string texto = productoPedido.Trim();
+            int posicionGuion = texto.IndexOf('-');
+
+            if (posicionGuion > 0)
+                texto = texto.Substring(0, posicionGuion).Trim();
+
+            return int.TryParse(texto, out idProducto);
         }
 
         public void CargarReporte()
@@ -134,8 +213,8 @@ namespace Proyecto
             {
                 dataGridReporte.Rows.Add(
                     meses[i],
-                    reporteVentas[i, 0],
-                    reporteVentas[i, 1]
+                    reporteVentas[i, 0].ToString("C2"),
+                    reporteVentas[i, 1].ToString("C2")
                 );
             }
         }
@@ -154,7 +233,7 @@ namespace Proyecto
 
             int columnaCategoria = 0;
 
-            if (categoria == "Electronicos")
+            if (string.Equals(categoria, "Electronicos", StringComparison.OrdinalIgnoreCase))
             {
                 columnaCategoria = 1;
             }

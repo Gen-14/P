@@ -53,12 +53,11 @@ namespace Proyecto
                     id = nuevoID,
                     fecha = dtFecha.Value,
                     cliente = tbCliente.Text,
-                    productos = listBox1.Text,
+                    productos = productosSeleccionados,
                     estado = estado.Text
                 };
-                listBox1.Text = obtenerProductosSeleccionados();
 
-                if (string.IsNullOrWhiteSpace(listBox1.Text))
+                if (string.IsNullOrWhiteSpace(productosSeleccionados))
                 {
                     MessageBox.Show("Debe seleccionar al menos un producto");
                     return;
