@@ -48,9 +48,9 @@
             this.tbCliente = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.menuPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -93,12 +93,13 @@
             this.almacenarPedidosToolStripMenuItem.Name = "almacenarPedidosToolStripMenuItem";
             this.almacenarPedidosToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.almacenarPedidosToolStripMenuItem.Text = "Almacenar pedidos";
-            this.almacenarPedidosToolStripMenuItem.Click += new System.EventHandler(this.almacenarPedidosToolStripMenuItem_Click);
+            this.almacenarPedidosToolStripMenuItem.Click += new System.EventHandler(this.bCancelar_Click);
+            this.almacenarPedidosToolStripMenuItem.DoubleClick += new System.EventHandler(this.almacenarPedidosToolStripMenuItem_Click);
             // 
             // verPedidosToolStripMenuItem
             // 
             this.verPedidosToolStripMenuItem.Name = "verPedidosToolStripMenuItem";
-            this.verPedidosToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.verPedidosToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.verPedidosToolStripMenuItem.Text = "Ver pedidos";
             this.verPedidosToolStripMenuItem.Click += new System.EventHandler(this.verPedidosToolStripMenuItem_Click);
             // 
@@ -270,15 +271,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "   ";
             // 
-            // listBox1
+            // label4
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(32, 244);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(196, 84);
-            this.listBox1.TabIndex = 18;
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(232, 286);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 17);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Cantidad";
             // 
             // numericUpDown1
             // 
@@ -297,15 +298,15 @@
             0,
             0});
             // 
-            // label4
+            // listBox1
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(232, 286);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 17);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Cantidad";
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(32, 244);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBox1.Size = new System.Drawing.Size(196, 84);
+            this.listBox1.TabIndex = 18;
             // 
             // pedidos
             // 

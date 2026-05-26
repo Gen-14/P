@@ -46,7 +46,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(378, 78);
+            this.label2.Location = new System.Drawing.Point(531, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 29);
             this.label2.TabIndex = 9;
@@ -55,9 +55,9 @@
             // listView1
             // 
             this.listView1.ForeColor = System.Drawing.Color.SeaShell;
-            this.listView1.Location = new System.Drawing.Point(25, 58);
+            this.listView1.Location = new System.Drawing.Point(106, 78);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(818, 400);
+            this.listView1.Size = new System.Drawing.Size(946, 436);
             this.listView1.TabIndex = 8;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -71,7 +71,7 @@
             this.registroDeVentasToolStripMenuItem});
             this.menuPedidos.Location = new System.Drawing.Point(0, 0);
             this.menuPedidos.Name = "menuPedidos";
-            this.menuPedidos.Size = new System.Drawing.Size(880, 28);
+            this.menuPedidos.Size = new System.Drawing.Size(1166, 28);
             this.menuPedidos.TabIndex = 7;
             this.menuPedidos.Text = "menuStrip1";
             // 
@@ -99,7 +99,7 @@
             // verPedidosToolStripMenuItem
             // 
             this.verPedidosToolStripMenuItem.Name = "verPedidosToolStripMenuItem";
-            this.verPedidosToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.verPedidosToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
             this.verPedidosToolStripMenuItem.Text = "Ver pedidos";
             this.verPedidosToolStripMenuItem.Click += new System.EventHandler(this.verPedidosToolStripMenuItem_Click);
             // 
@@ -113,10 +113,10 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(101, 130);
+            this.dataGridView1.Location = new System.Drawing.Point(129, 164);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(658, 267);
+            this.dataGridView1.Size = new System.Drawing.Size(897, 325);
             this.dataGridView1.TabIndex = 10;
             // 
             // verPedidos
@@ -125,7 +125,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(880, 516);
+            this.BackgroundImage = global::Proyecto.Properties.Resources.background;
+            this.ClientSize = new System.Drawing.Size(1166, 572);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listView1);

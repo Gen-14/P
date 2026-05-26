@@ -25,7 +25,6 @@ namespace Proyecto
         {
             InitializeComponent();
         }
-
         public class Venta
         {
             public string Producto { get; set; }

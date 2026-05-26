@@ -39,7 +39,6 @@ namespace Proyecto
                 string productosSeleccionados = obtenerProductosSeleccionados();
 
                 if (string.IsNullOrWhiteSpace(tbCliente.Text))
-                //string.IsNullOrWhiteSpace(txtCantidad.Text))
                 {
                     MessageBox.Show("Debe completar todos los campos");
                     return;
@@ -48,6 +47,8 @@ namespace Proyecto
                 {
                     nuevoID = Datos.ListaPedidos.Max(p => p.id) + 1;
                 }
+
+                //almacena el pedido
                 pedido nuevo = new pedido()
                 {
                     id = nuevoID,
@@ -57,14 +58,12 @@ namespace Proyecto
                     cantidad = (int)numericUpDown1.Value,
                     estado = estado.Text
                 };
-
                 if (string.IsNullOrWhiteSpace(productosSeleccionados))
                 {
                     MessageBox.Show("Debe seleccionar al menos un producto");
                     return;
                 }
                 Datos.ListaPedidos.Add(nuevo);
-                //carga los datos ingresados en la tabla y muestra un mensaje
                 //Hacer el archivo de txt
                 pedido.archivoTxt();
                 cargarDatos();
